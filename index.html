@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta name=”twitter:card” content=”summary“>
+  <meta name=”twitter:site” content=”@_riceham“>
+  <meta property='og:type' content="website">
+  <meta property='og:title' content="Source-Filter HiFiGAN Demo">
+  <meta property='og:url' content="https://chomeyama.github.io/SiFiGAN-Demo/">
+  <meta property='og:description' content="Project demo page.">
+  <meta property="og:image" content="img/me2.jpg">
+  <meta name="description" content="Source-Filter HiFiGAN Demo">
+  <title>Source-Filter HiFiGAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="css/style.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="img/me2.jpg">
+  <link rel=”canonical” href=”https://chomeyama.github.io/Profile/”>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header">
+      <h2><a href="https://chomeyama.github.io/Profile/">Reo YONEYAMA / Home</a></h2>
+      <nav class="pc-nav">
+        <ul id="nav">
+          <li id="nav"><a href="#abstract">Abstract</a></li>
+          <li id="nav"><a href="#demo">Demo</a></li>
+          <li id="nav"><a href="#citation">Citation</a></li>
+        </ul>
+      </nav>
+      <nav class="sp-nav">
+        <ul id="sp-nav">
+          <li id="sp-nav"><a href="#abstract">Abstract</a></li>
+          <li id="sp-nav"><a href="#demo">Demo</a></li>
+          <li id="sp-nav"><a href="#citation">Citation</a></li>
+          <li class="close"><span>Close</span></li>
+        </ul>
+      </nav>
+      <div id="hamburger">
+        <span></span>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <div class="paper_info">
+        <h1>Source-Filtler HiFiGAN: Fast and Pitch Controllable High-Fidelity Neural Vocoder</h1>
+        <h2 class="author">Reo Yoneyama<sup>1</sup>, <a href="https://bigpon.github.io/">Yi-Chiao Wu<sup>2</sup></a>, <a
+            href="https://sites.google.com/site/tomokitoda/">Tomoki Toda<sup>1</sup></a></h2>
+        <h2><sup>1</sup>Nagoya University, Japan, <sup>2</sup>Meta Reality Labs Research, USA</h2>
+        <h2 style="margin-top: 10px;">Submitted to <a href="">ICASSP 2023</a>
+        </h2>
+      </div>
+
+      <h2 class="sectitle">Abstract</h2>
+      <div id="abstract" class="section">
+        <p align="justify"> A Neural vocoder is crucial for the performance of voice generation applications.
+          In addition to voice quality, voice controllability and synthesis speed are also essential features of a
+          neural vocoder.
+          In particular, controlling fundamental frequency (F0) is especially important for accurately
+          reproducing intonation and musical notation.
+          Although our previous work, unified source-filter GAN vocoder, simultaneously achieves high voice quality and
+          F0 controllability, the very high-temporal resolution inputs result in high computation cost. The consequent
+          slow synthesis issue makes it challenging for real-time applications.
+          On the other hand, although the up-sampling-based vocoders such as HiFiGAN achieve fast high-fidelity voice
+          generation, their pitch-agnostic architectures usually lack F0 controllability.
+          This paper proposes a fast and F0 controllable high-fidelity neural vocoder by introducing the
+          source-filter theory into HiFiGAN.
+          According to the experimental results, the proposed method outperforms WORLD and HiFiGAN on Japanese singing
+          voice analysis-synthesis while achieving better speech quality and faster synthesis speed than HiFiGAN on a
+          single CPU.</p>
+        <h3 style="text-align: center;">[<a href="">Paper</a>] [<a href="">Arxiv</a>]
+          [<a href="https://github.com/chomeyama/SourceFilterHiFiGAN">Code</a>]
+        </h3>
+      </div>
+
+      <!-- <div class="images1">
+        <figure>
+          <img src="img/sifigan.png" alt="SiFiGAN" title="SiFiGAN">
+          <figcaption>SiFiGAN architecture</figcaption>
+        </figure>
+      </div>
+      <div class="images1">
+        <figure>
+          <img src="img/results.png" alt="result" title="result">
+          <figcaption>Results of objective and subjective evaluations. The best results and those that are not
+            significantly different from them are highlighted in bold. The MOS scores of the ground truth samples is
+            3.64 ± 0.05 (1.0 × F0). Real time factors (RTFs) are computed with 108 utterances (totally 878 [s]) on a
+            single AMD EPYC 7542 or GeForce RTX 3090.
+          </figcaption>
+        </figure>
+      </div> -->
+
+      <h2 class="sectitle">Demo</h2>
+      <div id="demo" class="section">
+        <p>
+          Only Namine Ritsu [1] database is used for the training. All vocoders are conditioned with WORLD [2] features
+          extracted with same hyperparameters.
+          All provided samples are unseen songs in the training.<br>
+
+          <b>Baseline models</b>
+        <ul>
+          <li>WORLD : A conventional source-filter vocoder [2].</li>
+          <li>hn-uSFGAN : Harmonic-plus-noise unified source-filter GAN [3].</li>
+          <li>HiFiGAN w/ Sine : HiFiGAN [4] w/ sine with sine embedding [5, 6].</li>
+        </ul>
+
+        <b>Ablation models</b>
+        <ul>
+          <li>SiFiGAN w/o reg : SiFiGAN trained without the regularization loss on output source excitation
+            signals [3].</li>
+          <li>SiFiGAN w/ F0 : SiFiGAN input F0 directry to the filter-branch.</li>
+          <li>SiFiGAN const : SiFiGAN trained with a constant dense factor [7] for all PDCNNs.</li>
+          <li>SiFiGAN single : SiFiGAN without separation of the source and filter branches.</li>
+        </ul>
+        Please also check our previous work hn-uSFGAN <a
+          href="https://chomeyama.github.io/HN-UnifiedSourceFilterGAN-Demo/">here</a>.</p>
+        <br>
+
+        <div class="selects">
+          <label for="utt_id">Utterance ID</label>
+          <div class="simple_select">
+            <select required id="utt_id" name="utt_id">
+              <option value="namine_ritsu_1st_color_seg1">1st_color_seg1</option>
+              <option value="namine_ritsu_1st_color_seg18">1st_color_seg18</option>
+              <option value="namine_ritsu_ARROW_seg5">ARROW_seg5</option>
+              <option value="namine_ritsu_ARROW_seg13">ARROW_seg13</option>
+              <option value="namine_ritsu_BC_seg2">BC_seg2</option>
+              <option value="namine_ritsu_BC_seg20" selected>BC_seg20</option>
+              <option value="namine_ritsu_Closetoyou_seg5">Closetoyou_seg5</option>
+              <option value="namine_ritsu_Closetoyou_seg24">Closetoyou_seg24</option>
+              <option value="namine_ritsu_ERROR_seg3">ERROR_seg3</option>
+              <option value="namine_ritsu_ERROR_seg21">ERROR_seg21</option>
+            </select>
+          </div>
+
+          <div class="button">
+            <input type="button" value="OK" onclick="clickBtn()">
+          </div>
+        </div>
+
+        <script>
+          function clickBtn() {
+            var utt_id = document.getElementById('utt_id');
+            utt_id.options[utt_id.selectedIndex].selected = true;
+            document.getElementById("natural_f1.00").src = "audio/" + "natural" + "/" + utt_id.value + "_f1.00.wav";
+            const methods = ["world", "hnusfgan", "hifigan", "hifigan.sine", "sifigan", "sifigan.wo.reg", "sifigan.w.f0", "sifigan.const", "sifigan.single"];
+            const f0_factors = ["_f0.50", "_f0.71", "_f1.00", "_f1.41", "_f2.00"];
+            for (const m of methods) {
+              for (const f of f0_factors) {
+                document.getElementById(m + f).src = "audio/" + m + "/" + utt_id.value + f + ".wav";
+              }
+            }
+          }
+        </script>
+
+        <table class="audio_table">
+          <thead>
+            <tr>
+              <th style="text-align: center">Model</th>
+              <th style="text-align: center">Copy Synthesis</th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-1.0</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>-0.5</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>0.5</sup></th>
+              <th style="text-align: center">F<sub>0</sub> x 2<sup>1.0</sup></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left" class="method_name">Natural</td>
+              <td style="text-align: center"><audio id="natural_f1.00"
+                  src="audio/natural/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              <td style="text-align: center"><audio src="" preload=""></audio></td>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">WORLD</td>
+              <td style="text-align: center"><audio id="world_f1.00" src="audio/world/namine_ritsu_BC_seg20_f1.00.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f0.50" src="audio/world/namine_ritsu_BC_seg20_f0.50.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f0.71" src="audio/world/namine_ritsu_BC_seg20_f0.71.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f1.41" src="audio/world/namine_ritsu_BC_seg20_f1.41.wav"
+                  controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="world_f2.00" src="audio/world/namine_ritsu_BC_seg20_f2.00.wav"
+                  controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">hn-uSFGAN</td>
+              <td style="text-align: center"><audio id="hnusfgan_f1.00"
+                  src="audio/hnusfgan/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hnusfgan_f0.50"
+                  src="audio/hnusfgan/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hnusfgan_f0.71"
+                  src="audio/hnusfgan/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hnusfgan_f1.41"
+                  src="audio/hnusfgan/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hnusfgan_f2.00"
+                  src="audio/hnusfgan/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">HiFiGAN</td>
+              <td style="text-align: center"><audio id="hifigan_f1.00"
+                  src="audio/hifigan/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan_f0.50"
+                  src="audio/hifigan/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan_f0.71"
+                  src="audio/hifigan/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan_f1.41"
+                  src="audio/hifigan/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan_f2.00"
+                  src="audio/hifigan/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">HiFiGAN<br>w/ Sine</td>
+              <td style="text-align: center"><audio id="hifigan.sine_f1.00"
+                  src="audio/hifigan.sine/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan.sine_f0.50"
+                  src="audio/hifigan.sine/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan.sine_f0.71"
+                  src="audio/hifigan.sine/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan.sine_f1.41"
+                  src="audio/hifigan.sine/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="hifigan.sine_f2.00"
+                  src="audio/hifigan.sine/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name"><b>SiFiGAN</b><br>(Proposed)</td>
+              <td style="text-align: center"><audio id="sifigan_f1.00"
+                  src="audio/sifigan/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan_f0.50"
+                  src="audio/sifigan/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan_f0.71"
+                  src="audio/sifigan/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan_f1.41"
+                  src="audio/sifigan/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan_f2.00"
+                  src="audio/sifigan/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">SiFiGAN<br> w/o reg</td>
+              <td style="text-align: center"><audio id="sifigan.wo.reg_f1.00"
+                  src="audio/sifigan.wo.reg/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.wo.reg_f0.50"
+                  src="audio/sifigan.wo.reg/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.wo.reg_f0.71"
+                  src="audio/sifigan.wo.reg/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.wo.reg_f1.41"
+                  src="audio/sifigan.wo.reg/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.wo.reg_f2.00"
+                  src="audio/sifigan.wo.reg/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">SiFiGAN<br> w/ F0</td>
+              <td style="text-align: center"><audio id="sifigan.w.f0_f1.00"
+                  src="audio/sifigan.w.f0/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.w.f0_f0.50"
+                  src="audio/sifigan.w.f0/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.w.f0_f0.71"
+                  src="audio/sifigan.w.f0/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.w.f0_f1.41"
+                  src="audio/sifigan.w.f0/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.w.f0_f2.00"
+                  src="audio/sifigan.w.f0/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">SiFiGAN<br> const</td>
+              <td style="text-align: center"><audio id="sifigan.const_f1.00"
+                  src="audio/sifigan.const/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.const_f0.50"
+                  src="audio/sifigan.const/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.const_f0.71"
+                  src="audio/sifigan.const/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.const_f1.41"
+                  src="audio/sifigan.const/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.const_f2.00"
+                  src="audio/sifigan.const/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left" class="method_name">SiFiGAN<br> single</td>
+              <td style="text-align: center"><audio id="sifigan.single_f1.00"
+                  src="audio/sifigan.single/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.single_f0.50"
+                  src="audio/sifigan.single/namine_ritsu_BC_seg20_f0.50.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.single_f0.71"
+                  src="audio/sifigan.single/namine_ritsu_BC_seg20_f0.71.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.single_f1.41"
+                  src="audio/sifigan.single/namine_ritsu_BC_seg20_f1.41.wav" controls="" preload=""></audio>
+              </td>
+              <td style="text-align: center"><audio id="sifigan.single_f2.00"
+                  src="audio/sifigan.single/namine_ritsu_BC_seg20_f2.00.wav" controls="" preload=""></audio>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="sectitle">Citation</h2>
+      <div id="citation" class="section">
+        <p></p>
+      </div>
+
+      <h2 class="sectitle">References</h2>
+      <div id="references" class="section">
+        <p>[1] Canon, “[NamineRitsu] Blue (YOASOBI) [ENUNU model Ver.2, Singing DBVer.2 release],”
+          https://www.youtube.com/watch?v=pKeo9IE_L1I.
+        <p>[2] M. Morise, F. Yokomori, and K. Ozawa, “WORLD: a vocoderbased high-quality speech synthesis system for
+          real-time applications,” IEICE Transactions on Information and Systems, vol. 99, no. 7, pp. 1877–1884, 2016.
+        </p>
+        <p>[3] R. Yoneyama, Y.-C. Wu, and T. Toda, “Unified SourceFilter GAN with Harmonic-plus-Noise Source Excitation
+          Generation,” in Proc. Interspeech, 2022, pp. 848–852.</p>
+        <p>[4] J. Kong, J. Kim, and J. Bae, “HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity
+          Speech Synthesis,” in Advances in NeurIPS, 2020, vol. 33, pp. 17022–17033.</p>
+        <p>[5] S. Shimizu, T. Okamoto, R. Takashima, T. Takiguchi, T. Toda, H. Kawai, “Initial investigation of
+          fundamental frequency controllable HiFi-GAN conditioned on mel-spectrogram,” in Acoustical Society of Japan,
+          Sep. 2022, pp. 1137–1140.</p>
+        <p>[6] K. Matsubara, T. Okamoto, R. Takashima, T. Takiguchi, T. Toda, H. Kawai, “Hamonic-Net+: Fundamental
+          frequency controllable fast neural vocoder with harmonic wave input and Layerwise-Quasi-Periodic CNNs,” in
+          Acoustical Society of Japan, Sep. 2022, pp. 1133–1136.</p>
+        <p>[7] Y.-C. Wu, T. Hayashi, T. Okamoto, H. Kawai, and T. Toda, “QuasiPeriodic Parallel WaveGAN: A
+          Non-Autoregressive Raw Waveform Generative Model With PitchDependent Dilated Convolution Neural Network,”
+          IEEE/ACM TASLP, vol. 29, pp. 792–806, 2021.</p>
+      </div>
+
+    </div>
+
+    <div class="page-top" id="js-page-top">
+      <span class="material-icons-outlined">expand_less</span>
+    </div>
+
+    <footer>
+      <a class="copyright">Copyright&copy;2022.</a>
+      <a href="https://github.com/chomeyama/" target="_blank">
+        <img class="icon" src="img/github_icon.png" alt="GitHub icon">
+      </a>
+      <a href="https://twitter.com/_riceham/" target="_blank">
+        <img class="icon" src="img/twitter_icon.png" alt="Twitter icon">
+      </a>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type='text/javascript' src="js/script.js"></script>
+</body>
+
+</html>

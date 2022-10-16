@@ -1,0 +1,539 @@
+@import url(sanitize.css);
+@import url(ress.css);
+
+body {
+  font-family: "Montserrat";
+  font-size: 14px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.8;
+  letter-spacing: 0.8px;
+  color: #444;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 19px;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+a {
+  transition: opacity 1s;
+  text-decoration: none;
+  color: #444;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main {
+  width: 85%;
+  margin: 0 auto;
+  padding: 25px 0;
+  background-color: #ffffff;
+}
+
+.main a:hover {
+  text-decoration: underline;
+}
+
+.section {
+  width: 97%;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.sectitle {
+  margin: 20px 0 15px 0;
+  position: relative;
+  padding-left: .5em;
+  border-left: 6px solid #666;
+  font-weight: bold;
+}
+
+figure {
+  display: flex;
+  flex-flow: column;
+  border: thin #c0c0c0 solid;
+  padding: 5px;
+}
+
+figcaption {
+  background-color: #444;
+  color: #ffffff;
+  font: italic smaller sans-serif;
+  padding: 3px;
+  margin-top: auto;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  padding-bottom: 5px;
+}
+
+.images2 {
+  display: flex;
+  justify-content: center;
+  padding: 0 1%;
+  margin: 5px 0;
+}
+
+.images2>figure {
+  margin: 0 auto;
+  width: 49%;
+}
+
+.images1 {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+.images1>figure {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.images1 img {
+  max-width: 70%;
+  height: auto;
+}
+
+/*--------------------------------
+ Header
+---------------------------------*/
+header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  background-color: #ffffff;
+  border-bottom: solid 1px #444;
+}
+
+header h2 {
+  margin-left: 3%;
+  /* font-size: 20px; */
+  font-weight: bold;
+}
+
+header a:hover {
+  font-size: 20px;
+}
+
+nav {
+  margin: 0 2% 0 auto;
+}
+
+#nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#nav li {
+  margin-right: 20px;
+  font-size: 16px;
+  float: left;
+}
+
+#nav li a {
+  position: relative;
+  display: inline-block;
+  padding: 5px 0;
+  transition: 0.3s;
+  letter-spacing: 0.05em;
+  color: #444;
+}
+
+#nav a:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  content: "";
+  transition: 0.3s;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #ffffff;
+}
+
+#nav a:hover:after {
+  width: 100%;
+}
+
+.sp-nav {
+  display: none;
+}
+
+/*--------------------------------
+ Paper info
+---------------------------------*/
+.paper_info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.paper_info h1 {
+  margin-bottom: 0;
+}
+
+.author {
+  color: #000050;
+}
+
+.author a {
+  color: #000050;
+}
+
+/*--------------------------------
+ Abstract
+---------------------------------*/
+#abstract {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#abstract p {
+  /* padding: 2px; */
+  background-color: #f5f5f5;
+  padding: 1.5% 2.5% 1.5% 2.5%;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+/*--------------------------------
+ Demo
+---------------------------------*/
+
+ul {
+  margin-left: 15px;
+}
+
+.selects {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.selects label {
+  font-weight: bolder;
+}
+
+.simple_select {
+  position: relative;
+  border: 1px solid #bbbbbb;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+.simple_select select {
+  padding: 8px 38px 8px 8px;
+  width: 100%;
+  padding-right: 1em;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.simple_select select::-ms-expand {
+  display: none;
+}
+
+.simple_select::before {
+  position: absolute;
+  top: 0.8em;
+  right: 0.9em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #5e5e5e;
+  pointer-events: none;
+}
+
+.simple_select:after {
+  position: absolute;
+  top: 0;
+  right: 2.5em;
+  bottom: 0;
+  width: 1px;
+  content: '';
+  border-left: 1px solid #bbbbbb;
+}
+
+.button {
+  margin-top: 1%;
+  text-align: center;
+}
+
+.button input {
+  display: inline-block;
+  border-radius: 10%;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 0.8em;
+  transition: .1s;
+  border: 1px solid #666;
+}
+
+.button input:hover {
+  color: #ffffff;
+  background: #666;
+}
+
+table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  width: 95%;
+  margin: 1% auto 0 auto;
+}
+
+.audio_table th {
+  border: solid 1px #ccc;
+  padding: 10px;
+  background: #5e5e5e;
+  color: #ffffff;
+}
+
+.audio_table td {
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+td.method_name {
+  white-space: nowrap;
+}
+
+/*--------------------------------
+ Citation
+---------------------------------*/
+#citation p {
+  resize: none;
+  height: auto;
+  background-color: #f5f5f5;
+  padding: 2%;
+  font-style: italic;
+  font-size: 13px;
+}
+
+/*--------------------------------
+ References
+---------------------------------*/
+#references p {
+  font-size: 13px;
+}
+
+/*--------------------------------
+ Page-top
+---------------------------------*/
+.page-top {
+  margin-top: 20px;
+  padding: 7px 0;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #666;
+}
+
+.page-top .material-icons-outlined {
+  vertical-align: bottom;
+  color: #ffffff;
+}
+
+/*--------------------------------
+ Footer
+---------------------------------*/
+footer {
+  padding: 18px 0;
+  background-color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+footer .copyright {
+  color: #ffffff;
+}
+
+footer .icon {
+  width: 20px;
+  margin-left: 10px;
+}
+
+/*--------------------------------
+ For Smartphones
+---------------------------------*/
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  selection {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 17px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .pc-nav {
+    display: none;
+  }
+
+  .sp-nav {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    display: block;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.2s ease-in-out;
+    background: #444;
+  }
+
+  #hamburger {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 18px;
+    margin: 0 3% 0 auto;
+  }
+
+  #hamburger span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #444;
+    transform: translateY(-50%);
+  }
+
+  #hamburger::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #444;
+  }
+
+  #hamburger::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    height: 2px;
+    background-color: #444;
+  }
+
+  .sp-nav ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .sp-nav li {
+    font-size: 19px;
+    margin: 15px 0;
+    padding: 0;
+  }
+
+  .sp-nav li a {
+    color: #ffffff;
+  }
+
+  .sp-nav li span {
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  .sp-nav li span {
+    display: block;
+    padding: 20px 0;
+  }
+
+  .sp-nav .close {
+    color: #ffffff;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .sp-nav .close::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: #ffffff;
+    transform: rotate(45deg);
+  }
+
+  .sp-nav .close::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: #ffffff;
+    transform: rotate(-45deg);
+  }
+
+  .toggle {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
