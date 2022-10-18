@@ -312,20 +312,29 @@ table {
   overflow-x: scroll;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
-  width: 95%;
+  width: 100%;
   margin: 1% auto 0 auto;
 }
 
 .audio_table th {
   border: solid 1px #ccc;
   padding: 10px;
-  background: #5e5e5e;
+  background: #555;
   color: #ffffff;
 }
 
 .audio_table td {
   border: solid 1px #ccc;
   padding: 10px;
+}
+
+.td_fixed {
+  position: sticky;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  background: #555;
+  z-index: 1;
 }
 
 td.method_name {
