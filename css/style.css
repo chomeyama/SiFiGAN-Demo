@@ -337,10 +337,6 @@ table {
   z-index: 1;
 }
 
-td.method_name {
-  white-space: nowrap;
-}
-
 /*--------------------------------
  Citation
 ---------------------------------*/
