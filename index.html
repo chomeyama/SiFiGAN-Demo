@@ -7,12 +7,12 @@
   <meta name=”twitter:card” content=”summary“>
   <meta name=”twitter:site” content=”@_riceham“>
   <meta property='og:type' content="website">
-  <meta property='og:title' content="Source-Filter HiFiGAN Demo">
+  <meta property='og:title' content="Source-Filter HiFi-GAN Demo">
   <meta property='og:url' content="https://chomeyama.github.io/SiFiGAN-Demo/">
   <meta property='og:description' content="Project demo page.">
   <meta property="og:image" content="img/me2.jpg">
-  <meta name="description" content="Source-Filter HiFiGAN Demo">
-  <title>Source-Filter HiFiGAN</title>
+  <meta name="description" content="Source-Filter HiFi-GAN Demo">
+  <title>Source-Filter HiFi-GAN</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="css/style.css" media="all" rel="stylesheet" type="text/css">
@@ -49,7 +49,7 @@
     <div class="main">
 
       <div class="paper_info">
-        <h1>Source-Filtler HiFiGAN: Fast and Pitch Controllable High-Fidelity Neural Vocoder</h1>
+        <h1>Source-Filtler HiFi-GAN: Fast and Pitch Controllable High-Fidelity Neural Vocoder</h1>
         <h2 class="author">Reo Yoneyama<sup>1</sup>, <a href="https://bigpon.github.io/">Yi-Chiao Wu<sup>2</sup></a>,
           and <a href="https://sites.google.com/site/tomokitoda/">Tomoki Toda<sup>1</sup></a></h2>
         <h2><sup>1</sup>Nagoya University, Japan, <sup>2</sup>Meta Reality Labs Research, USA</h2>
@@ -62,14 +62,14 @@
         <p align="justify">
           Our previous work, the unified source-filter GAN (uSFGAN) vocoder, introduced a novel architecture based on
           the source-filter theory into the parallel waveform generative adversarial network to achieve high voice
-          quality and pitch controllability simultaneously. However, the very high temporal resolution inputs result in
-          high computation costs. In contrast, the HiFiGAN vocoder achieves fast high-fidelity voice generation thanks
-          to the efficient upsampling-based generator architecture. However, pitch-agnostic architectures usually lack
-          pitch controllability. To develop a fast and pitch-controllable high-fidelity neural vocoder, we introduce the
-          source-filter theory into HiFiGAN based on a hierarchical propagation of source excitation information to the
-          resonance filtering network. According to the experimental results, our proposed source-filter HiFiGAN
-          outperforms HiFiGAN and uSFGAN on a Japanese singing voice generation while achieving better voice quality and
-          faster synthesis speed on a single CPU.
+          quality and pitch controllability. However, the high temporal resolution inputs result in high computation
+          costs. Although the HiFi-GAN vocoder achieves fast high-fidelity voice generation thanks to the efficient
+          upsampling-based generator architecture, the pitch controllability is severely limited. To realize a fast and
+          pitch-controllable high-fidelity neural vocoder, we introduce the source-filter theory into HiFi-GAN by
+          hierarchically conditioning the resonance filtering network on a well-estimated source excitation information.
+          According to the experimental results, our proposed method outperforms HiFi-GAN and uSFGAN on a singing voice
+          generation in voice quality and synthesis speed on a single CPU. Furthermore, unlike the uSFGAN vocoder, the
+          proposed method can be easily adopted/integrated in real-time applications and end-to-end systems.
         </p>
         <h3 style="text-align: center;">[<a href="">Paper</a>] [<a href="">Arxiv</a>]
           [<a href="https://github.com/chomeyama/SiFiGAN">Code</a>]
@@ -79,7 +79,8 @@
       <div class="images1">
         <figure>
           <img src="img/sifigan.png" alt="SiFiGAN architecture" title="SiFiGAN architecture">
-          <figcaption>SiFiGAN comprises the source-network (left) and filter-network (right). Conv, T.Conv, QP-ResBlock,
+          <figcaption>SiFi-GAN comprises the source-network (left) and filter-network (right). Conv, T.Conv,
+            QP-ResBlock,
             and MRF denote 1D convolution, transposed 1D convolution, quasi-periodic residual block, and multi-receptive
             fusion [1], respectively. d, a, and Fs denote dilation sizes, the dense factor [2], and the sampling rate
             in Hz, respectively.</figcaption>
@@ -88,16 +89,17 @@
       <div class="images1">
         <figure>
           <img src="img/results.png" alt="results" title="results">
-          <figcaption>Results of objective and subjective evaluations. The MOS of the ground truth samples is 3.99 ±
-            0.05 (1.0 x F<sub>0</sub>). Real time factors (RTFs) are computed with 108 clips (totally 878 s) on a single
-            AMD EPYC 7542 or GeForce RTX 3090.
+          <figcaption>Results of objective and subjective evaluations. The MOS of the ground truth samples was 3.99 ±
+            0.05 (1.0 x F<sub>0</sub>). Real time factors (RTFs) were computed with 108 clips (totally 878 s) on a
+            single AMD EPYC 7542 or GeForce RTX 3090. The RTFs of the original HiFi-GAN were 0.84 on the CPU and 3.0 x
+            10<sup>-3</sup> on the GPU.
           </figcaption>
         </figure>
       </div>
       <div class="images1">
         <figure>
           <img src="img/spec.png" alt="spectrogram comparison" title="spectrogram comparison">
-          <figcaption>Spectrograms of output singing voices from SiFiGAN (left) and SiFiGAN Direct (right),
+          <figcaption>Spectrograms of output singing voices from SiFi-GAN (left) and SiFi-GAN Direct (right),
             respectively.
           </figcaption>
         </figure>
@@ -114,13 +116,13 @@
           <li>WORLD : A conventional source-filter vocoder [4].</li>
           <li>hn-uSFGAN : Harmonic-plus-noise unified source-filter GAN [5]. Please check the <a
               href="https://chomeyama.github.io/HN-UnifiedSourceFilterGAN-Demo/">DEMO</a> for more information.</li>
-          <li>HiFiGAN : HiFiGAN (V1) [1] conditioned on the WORLD features.</li>
-          <li>HiFiGAN + Sine : HiFiGAN (V1) conditioned on the WORLD features and the sine embedding through
+          <li>HiFi-GAN : HiFi-GAN (V1) [1] conditioned on the WORLD features.</li>
+          <li>HiFi-GAN + Sine : HiFi-GAN (V1) conditioned on the WORLD features and the sine embedding through
             downsampling CNNs [6-8].</li>
-          <li>HiFiGAN + Sine + QP : Extended HiFiGAN + Sine model by inserting QP-ResBlocks after each transposed CNN.
+          <li>HiFi-GAN + Sine + QP : Extended HiFi-GAN + Sine model by inserting QP-ResBlocks after each transposed CNN.
           </li>
-          <li>SiFiGAN : Proposed source-filter HiFiGAN.</li>
-          <li>SiFiGAN Direct : SiFiGAN without 2nd downsampling CNNs. In this model, the source excitation
+          <li>SiFi-GAN : Proposed source-filter HiFi-GAN.</li>
+          <li>SiFi-GAN Direct : SiFi-GAN without 2nd downsampling CNNs. In this model, the source excitation
             representations from each QP-ResBlock are directly fed to filter-network at the corresponding temporal
             resolution without passing downsampling CNNs.</li>
         </ul>
@@ -223,7 +225,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="td_fixed">HiFiGAN</td>
+              <td style="text-align: left" class="td_fixed">HiFi-GAN</td>
               <td style="text-align: center"><audio id="hifigan_f1.00"
                   src="audio/hifigan/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -241,7 +243,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="td_fixed">HiFiGAN<br> + Sine</td>
+              <td style="text-align: left" class="td_fixed">HiFi-GAN<br> + Sine</td>
               <td style="text-align: center"><audio id="hifigan.sine_f1.00"
                   src="audio/hifigan.sine/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -259,7 +261,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="td_fixed">HiFiGAN<br> + Sine + QP</td>
+              <td style="text-align: left" class="td_fixed">HiFi-GAN<br> + Sine + QP</td>
               <td style="text-align: center"><audio id="hifigan.sine.qp_f1.00"
                   src="audio/hifigan.sine.qp/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -277,7 +279,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="td_fixed"><b>SiFiGAN</b><br>(Proposed)</td>
+              <td style="text-align: left" class="td_fixed"><b>SiFi-GAN</b><br>(Proposed)</td>
               <td style="text-align: center"><audio id="sifigan_f1.00"
                   src="audio/sifigan/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
               </td>
@@ -295,7 +297,7 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align: left" class="td_fixed">SiFiGAN<br>Direct</td>
+              <td style="text-align: left" class="td_fixed">SiFi-GAN<br>Direct</td>
               <td style="text-align: center"><audio id="sifigan.abl_f1.00"
                   src="audio/sifigan.abl/namine_ritsu_BC_seg20_f1.00.wav" controls="" preload=""></audio>
               </td>
