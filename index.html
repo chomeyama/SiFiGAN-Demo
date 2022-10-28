@@ -49,7 +49,7 @@
     <div class="main">
 
       <div class="paper_info">
-        <h1>Source-Filtler HiFi-GAN: Fast and Pitch Controllable High-Fidelity Neural Vocoder</h1>
+        <h1>Source-Filter HiFi-GAN: Fast and Pitch Controllable High-Fidelity Neural Vocoder</h1>
         <h2 class="author">Reo Yoneyama<sup>1</sup>, <a href="https://bigpon.github.io/">Yi-Chiao Wu<sup>2</sup></a>,
           and <a href="https://sites.google.com/site/tomokitoda/">Tomoki Toda<sup>1</sup></a></h2>
         <h2><sup>1</sup>Nagoya University, Japan, <sup>2</sup>Meta Reality Labs Research, USA</h2>
@@ -71,7 +71,7 @@
           generation in voice quality and synthesis speed on a single CPU. Furthermore, unlike the uSFGAN vocoder, the
           proposed method can be easily adopted/integrated in real-time applications and end-to-end systems.
         </p>
-        <h3 style="text-align: center;">[<a href="">Paper</a>] [<a href="">Arxiv</a>]
+        <h3 style="text-align: center;">[<a href="https://arxiv.org/abs/2210.15533">Arxiv</a>]
           [<a href="https://github.com/chomeyama/SiFiGAN">Code</a>]
         </h3>
       </div>
@@ -80,10 +80,10 @@
         <figure>
           <img src="img/sifigan.png" alt="SiFiGAN architecture" title="SiFiGAN architecture">
           <figcaption>SiFi-GAN comprises the source-network (left) and filter-network (right). Conv, T.Conv,
-            QP-ResBlock,
-            and MRF denote 1D convolution, transposed 1D convolution, quasi-periodic residual block, and multi-receptive
-            fusion [1], respectively. d, a, and Fs denote dilation sizes, the dense factor [2], and the sampling rate
-            in Hz, respectively.</figcaption>
+            QP-ResBlock, and MRF denote 1D convolution, transposed 1D convolution, quasi-periodic residual block, and
+            multi-receptive
+            fusion [1], respectively. d, a, and Fs denote dilation sizes, the dense factor [2], and the sampling rate in
+            Hz, respectively.</figcaption>
         </figure>
       </div>
       <div class="images1">
@@ -91,7 +91,7 @@
           <img src="img/results.png" alt="results" title="results">
           <figcaption>Results of objective and subjective evaluations. The MOS of the ground truth samples was 3.99 ±
             0.05 (1.0 x F<sub>0</sub>). Real time factors (RTFs) were computed with 108 clips (totally 878 s) on a
-            single AMD EPYC 7542 or GeForce RTX 3090. The RTFs of the original HiFi-GAN were 0.84 on the CPU and 3.0 x
+            single AMD EPYC 7542 or GeForce RTX 3090. The RTFs of the vanilla HiFi-GAN were 0.84 on the CPU and 3.0 x
             10<sup>-3</sup> on the GPU.
           </figcaption>
         </figure>
@@ -116,7 +116,7 @@
           <li>WORLD : A conventional source-filter vocoder [4].</li>
           <li>hn-uSFGAN : Harmonic-plus-noise unified source-filter GAN [5]. Please check the <a
               href="https://chomeyama.github.io/HN-UnifiedSourceFilterGAN-Demo/">DEMO</a> for more information.</li>
-          <li>HiFi-GAN : HiFi-GAN (V1) [1] conditioned on the WORLD features.</li>
+          <li>HiFi-GAN : The vanilla HiFi-GAN (V1) [1] conditioned on the WORLD features.</li>
           <li>HiFi-GAN + Sine : HiFi-GAN (V1) conditioned on the WORLD features and the sine embedding through
             downsampling CNNs [6-8].</li>
           <li>HiFi-GAN + Sine + QP : Extended HiFi-GAN + Sine model by inserting QP-ResBlocks after each transposed CNN.
@@ -320,7 +320,17 @@
 
       <h2 class="sectitle">Citation</h2>
       <div id="citation" class="section">
-        <p></p>
+        <p>@misc{https://doi.org/10.48550/arxiv.2210.15533,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;author = {Reo Yoneyama and Yi-Chiao Wu and Tomoki Toda},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;title = {{Source-Filter HiFi-GAN: Fast and Pitch Controllable High-Fidelity Neural
+          Vocoder}},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;year = {2022},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;publisher = {arXiv},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;url = {https://arxiv.org/abs/2210.15533},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;doi = {10.48550/ARXIV.2210.15533},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;copyright = {arXiv.org perpetual, non-exclusive license}<br>
+          }
+        </p>
       </div>
 
       <h2 class="sectitle">References</h2>
