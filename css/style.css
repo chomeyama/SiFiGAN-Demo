@@ -394,6 +394,13 @@ footer .icon {
   margin-left: 10px;
 }
 
+footer a i {
+  color: white;
+  font-size: 1.4em;
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
 /*--------------------------------
  For Smartphones
 ---------------------------------*/
